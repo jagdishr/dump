@@ -1,5 +1,5 @@
 #include <iostream>
-#include "variadic_templates.h"
+#include <all_includes.h>
 
 int main()
 {
