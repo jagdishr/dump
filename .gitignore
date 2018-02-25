@@ -3,3 +3,9 @@
 ################################################################################
 
 /.vs
+/learning/x64/Debug
+/learning/learning.vcxproj.filters
+/learning/learning.vcxproj
+/learning/learning.sln
+/learning/Debug
+/learning/.vs/learning/v15
