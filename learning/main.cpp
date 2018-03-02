@@ -4,5 +4,7 @@
 int main()
 {
 	variadic_templates_run();
+
+	getchar();
 	return 0;
 }
