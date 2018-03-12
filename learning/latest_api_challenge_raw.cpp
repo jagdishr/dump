@@ -28,7 +28,7 @@ std::vector<CSVData> Read(const std::string& input)
 
 int latest_api_challenge_raw_run()
 {
-    std::vector<CSVData> objs = Read("Mail App, Authentication API, v6 \nVideo Call App, Authentication API, v7 \nMail App, Data Storage API, v10 \nChat App, Data Storage API, v11 \nMail App, Search API, v6 \nChat App, Authentication API, v8 \nChat App, Presence API, v2 \nVideo Call App, Data Storage API, v11 \nVideo Call App, Video Compression API, v3");
+    std::vector<CSVData> objs = Read("Mail App, Authentication API, v6 \nVideo Call App, Authentication API, v8 \nMail App, Data Storage API, v10 \nChat App, Data Storage API, v11 \nMail App, Search API, v6 \nChat App, Authentication API, v8 \nChat App, Presence API, v2 \nVideo Call App, Data Storage API, v11 \nVideo Call App, Video Compression API, v3");
     
     /*for(auto o : objs)
     {
@@ -72,7 +72,7 @@ int latest_api_challenge_raw_run()
         }
     }
     
-    /*std::cout << output.size();
+    //std::cout << output.size();
     for(auto o : output)
     {
         std::cout << o.tokens[0] << o.tokens[1] << o.tokens[2] << std::endl;
@@ -84,7 +84,7 @@ int latest_api_challenge_raw_run()
         std::cout << o.tokens[0] << o.tokens[1] << o.tokens[2] << std::endl;
     }
     
-    std::cout << "\n\n\n";*/
+    std::cout << "\n\n\n";
     
     for(auto o : latest)
     {
