@@ -12,6 +12,7 @@ static inline void ltrim(std::string &s) {
 
 int latest_api_challenge_run()
 {
+	//std::stringstream input_data("Mail App, Authentication API, v6 \nVideo Call App, Authentication API, v6 \nMail App, Data Storage API, v10 \nChat App, Data Storage API, v11 \nMail App, Search API, v6 \nChat App, Authentication API, v8 \nChat App, Presence API, v2 \nVideo Call App, Data Storage API, v11 \nVideo Call App, Video Compression API, v3");
 	std::stringstream input_data("Mail App, Authentication API, v6 \nVideo Call App, Authentication API, v8 \nMail App, Data Storage API, v10 \nChat App, Data Storage API, v11 \nMail App, Search API, v6 \nChat App, Authentication API, v8 \nChat App, Presence API, v2 \nVideo Call App, Data Storage API, v11 \nVideo Call App, Video Compression API, v3");
 
 	//Applications

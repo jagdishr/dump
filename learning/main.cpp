@@ -9,7 +9,10 @@ int main()
 	//latest_api_challenge_raw_run(); 
 
 	//this one works, although O(n^2) to read, O(nlogn) to parse -.-
-	latest_api_challenge_run();
+	//latest_api_challenge_run();
+	
+	//implementation of binary search tree where we insert elements, perform inorder traversal, copy tree and perform inorder of copy
+	run_bst_example();
 
 	getchar();
 	return 0;
