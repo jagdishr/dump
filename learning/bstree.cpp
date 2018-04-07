@@ -38,7 +38,8 @@ BST& BST::operator= (const BST &t)
 {
 	if (&t == this) return *this;
 
-	head = t.head;
+	if(head) deleteNode(head);
+	if(t.head) copyTree(head, t.head);
 	return *this;
 }
 
@@ -125,4 +126,13 @@ void run_bst_example()
 	std::cout << "\n";
 	BST tree2(tree);
 	tree2.inorder();
+
+	std::cout << "\n";
+	BST tree3 = tree;
+	tree3.inorder();
+
+	std::cout << "\n";
+	tree2.insert(Value(90, "a"));
+	tree3 = tree2;
+	tree3.inorder();
 }
