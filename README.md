@@ -5,8 +5,8 @@ Initial commit for readme.
 
 TODO:
 
-1. abcdefg (print all sub-strings)
-2. parse post-fix (ab+cd*-) 
+~~1. abcdefg (print all sub-strings)
+2. parse post-fix (ab+cd*-) ~~
 3. chess problem - min moves for knight at a position to attack a given position of queen
 4. the [ 0 1 0 0 2 2 1 0 0 1 2 2 1 0 0 1 ] sort this most efficiently
 
