@@ -8,6 +8,13 @@ class Value
 public:
 	Value() : valueindex(0), data("") {}
 	Value(int v, std::string d) : valueindex(v), data(d) {}
+	bool operator < (const Value& v) const {
+		if (valueindex < v.valueindex) return true;
+		return false;
+	}
+	bool operator ==(const Value& v) const {
+		return !(*this < v) && !(v < *this);
+	}
 
 	int get() const { return valueindex; }
 	std::string get_data() const { return data; }
@@ -27,6 +34,13 @@ public:
 	BSTNode(Value v, BSTNode *l, BSTNode *r) : val(v), left(l), right(r) {}
 	BSTNode(const BSTNode &n);
 	BSTNode& operator= (const BSTNode &n);
+	bool operator < (const BSTNode& b) const {
+		if (val < b.val) return true;
+		return false;
+	}
+	bool operator ==(const BSTNode& b) const {
+		return !(this->val < b.val) && !(b.val < this->val);
+	}
 
 	Value get_value() const { return val; }
 	BSTNode* get_left() { return left; }
@@ -43,8 +57,16 @@ class BST
 {
 	BSTNode *head;
 	BSTNode* copyTree(BSTNode*&, BSTNode*);
+	
 	BSTNode* insert(BSTNode*, const Value&);
 	void inorder(BSTNode*);
+	void preorder(BSTNode*);
+	void postorder(BSTNode*);
+
+	void it_inorder(BSTNode*);
+	void it_preorder(BSTNode*);
+	void it_postorder(BSTNode*);
+	void it_postorder1stack(BSTNode*);
 	void deleteNode(BSTNode*);
 public:
 	BST() : head(nullptr) {}
@@ -53,7 +75,13 @@ public:
 
 	BSTNode* insert(const Value&);
 	void inorder() { inorder(head);  }
+	void preorder() { preorder(head);  }
+	void postorder() { postorder(head); }
 
+	void it_inorder() { it_inorder(head); }
+	void it_preorder() { it_preorder(head); }
+	void it_postorder() { it_postorder(head); }
+	void it_postorder1stack() { it_postorder1stack(head); }
 	~BST();
 };
 

@@ -12,7 +12,11 @@ int main()
 	//latest_api_challenge_run();
 	
 	//implementation of binary search tree where we insert elements, perform inorder traversal, copy tree and perform inorder of copy
-	run_bst_example();
+	//6ddrun_bst_example();
+
+	//run_all_substrings_string();
+
+	run_postfix();
 
 	getchar();
 	return 0;
