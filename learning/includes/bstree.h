@@ -57,8 +57,11 @@ class BST
 {
 	BSTNode *head;
 	BSTNode* copyTree(BSTNode*&, BSTNode*);
-	
+	BSTNode* BST::minValNode(BSTNode*);
+
 	BSTNode* insert(BSTNode*, const Value&);
+	BSTNode* deleteNode(BSTNode*, const Value&);
+
 	void inorder(BSTNode*);
 	void preorder(BSTNode*);
 	void postorder(BSTNode*);
@@ -67,13 +70,16 @@ class BST
 	void it_preorder(BSTNode*);
 	void it_postorder(BSTNode*);
 	void it_postorder1stack(BSTNode*);
-	void deleteNode(BSTNode*);
+	void deleteT(BSTNode*);
 public:
 	BST() : head(nullptr) {}
 	BST(BST &t);
 	BST& operator= (const BST &t);
 
 	BSTNode* insert(const Value&);
+	BSTNode* search(const Value&);
+	BSTNode* deleteNode(const Value& v) { return deleteNode(head, v);  }
+
 	void inorder() { inorder(head);  }
 	void preorder() { preorder(head);  }
 	void postorder() { postorder(head); }

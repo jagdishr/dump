@@ -39,7 +39,7 @@ BST& BST::operator= (const BST &t)
 {
 	if (&t == this) return *this;
 
-	if(head) deleteNode(head);
+	if(head) deleteT(head);
 	if(t.head) copyTree(head, t.head);
 	return *this;
 }
@@ -55,6 +55,17 @@ BSTNode* BST::copyTree(BSTNode *&node, BSTNode *n)
 		node->set_right(copyTree(right, n->get_right()));
 	}
 	return node;
+}
+
+BSTNode* BST::minValNode(BSTNode* node)
+{
+	BSTNode* current = node;
+
+	/* loop down to find the leftmost leaf */
+	while (current->get_left() != nullptr)
+		current = current->get_left();
+
+	return current;
 }
 
 BSTNode* BST::insert(BSTNode* node, const Value& v)
@@ -85,6 +96,53 @@ BSTNode* BST::insert(const Value& v)
 		return head;
 	}
 	return insert(head, v);
+}
+
+BSTNode* BST::search(const Value& v)
+{
+	BSTNode* current = head;
+	while (current != nullptr)
+	{
+		if (current->get_value() == v) return current;
+		current = (v < current->get_value()) ? current->get_left() : current->get_right();
+	}
+	return current;
+}
+
+BSTNode* BST::deleteNode(BSTNode* node, const Value& v)
+{
+	if (node == nullptr) return nullptr;
+
+	if (v < node->get_value())
+	{
+		node->set_left(deleteNode(node->get_left(), v));
+	}
+	else if (node->get_value() < v)
+	{
+		node->set_right(deleteNode(node->get_right(), v));
+	}
+	else
+	{
+		if (node->get_left() == nullptr)
+		{
+			BSTNode* tmp = node->get_right();
+			delete node;
+			return tmp;
+		}
+		else if (node->get_right() == nullptr)
+		{
+			BSTNode* tmp = node->get_left();
+			delete node;
+			return tmp;
+		}
+
+		BSTNode* tmp = minValNode(node->get_right());
+		node->set_value(tmp->get_value());
+
+		node->set_right(deleteNode(node->get_right(), tmp->get_value()));
+	}
+
+	return node;
 }
 
 void BST::inorder(BSTNode* node)
@@ -237,19 +295,19 @@ void BST::it_postorder1stack(BSTNode* node)
 	} while (!nodeStack.empty());
 }
 
-void BST::deleteNode(BSTNode* node)
+void BST::deleteT(BSTNode* node)
 {
 	if (node != nullptr)
 	{
-		deleteNode(node->get_left());
-		deleteNode(node->get_right());
+		deleteT(node->get_left());
+		deleteT(node->get_right());
 		delete node;
 	}
 }
 
 BST::~BST()
 {
-	deleteNode(head);
+	deleteT(head);
 }
 
 void run_bst_example()
@@ -299,4 +357,29 @@ void run_bst_example()
 	tree3.it_postorder();
 	std::cout << "\n";
 	tree3.it_postorder1stack();
+
+	Value v1(20, "a");
+	BSTNode* found = tree3.search(v1);
+	if (found) std::cout << "\n\nFound: " << found->get_value().get();
+	else std::cout << "\n\nNot Found";
+
+	Value v2(28, "a");
+	found = tree3.search(v2);
+	if (found) std::cout << "\n\nFound: " << found->get_value().get();
+	else std::cout << "\n\nNot Found";
+
+	std::cout << "\n\nDelete 20:\n";
+	Value v3(20, "a");
+	tree3.deleteNode(v3);
+	tree3.inorder();
+
+	std::cout << "\n\nDelete 50:\n";
+	Value v4(50, "a");
+	tree3.deleteNode(v4);
+	tree3.inorder();
+
+	std::cout << "\n\nDelete 90:\n";
+	Value v5(90, "a");
+	tree3.deleteNode(v5);
+	tree3.inorder();
 }
